@@ -29,12 +29,15 @@ namespace Votekick
         public override void OnDisabled()
         {
             if (ActiveVote is not null)
-            {
-                Timing.KillCoroutines(ActiveVote.ActiveCoro);
-                ActiveVote = null;
-            }
+                TerminateCurrentVote();
 
             base.OnDisabled();
+        }
+
+        internal void TerminateCurrentVote()
+        {
+            Timing.KillCoroutines(ActiveVote.ActiveCoro);
+            ActiveVote = null;
         }
     }
 }

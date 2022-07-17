@@ -22,7 +22,7 @@ namespace Votekick
         internal const byte Yes = 0;
         internal const byte No = 1;
 
-        protected static void BroadcastToAllPlayers(string message)
+        internal static void BroadcastToAllPlayers(string message)
         {
             foreach (var player in Player.List)
             {

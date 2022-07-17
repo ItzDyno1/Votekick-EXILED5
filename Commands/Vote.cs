@@ -35,6 +35,9 @@ namespace Votekick.Commands
                     }
                     return Start(Arguments, sender, out response);
 
+                case "delete":
+                    return Delete(Arguments, sender, out response);
+
                 case "yes":
                 case "no":
                 case "y":
@@ -103,6 +106,26 @@ namespace Votekick.Commands
             return true;
         }
 
+        public bool Delete(ArraySegment<string> Arguments, ICommandSender sender, out string response)
+        {
+            if (!CanDelete(sender as CommandSender))
+            {
+                response = "You are not allowed to use this command!";
+                return false;
+            }
+
+            if (ActiveVote is null)
+            {
+                response = "There is currently no vote active!";
+                return false;
+            }
+
+            Vote.BroadcastToAllPlayers(Votekick.Instance.Config.VoteDeletedBroadcast);
+            Votekick.Instance.TerminateCurrentVote();
+            response = "Vote successfully deleted!";
+            return true;
+        }
+
         public bool SendVote(ArraySegment<string> Arguments, ICommandSender sender, out string response)
         {
             var PlayerSender = Player.Get((sender as CommandSender)?.SenderId);
@@ -149,6 +172,11 @@ namespace Votekick.Commands
         public bool CanStart(CommandSender player)
         {
             return player.CheckPermission("vk.start");
+        }
+
+        public bool CanDelete(CommandSender player)
+        {
+            return player.CheckPermission("vk.delete");
         }
 
         public bool CanVote(CommandSender player)
