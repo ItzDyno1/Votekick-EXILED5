@@ -1,4 +1,4 @@
-﻿using Exiled.API.Interfaces;
+using Exiled.API.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,32 +10,32 @@ namespace Votekick
 {
     internal class Config : IConfig
     {
-        [Description("Whether or not the plugin is enabled")]
+        [Description("Ya sea que el complemento esté habilitado o no")]
         public bool IsEnabled { get; set; } = true;
 
-        [Description("How many seconds players have to vote")]
+        [Description("Cuántos segundos tienen los jugadores para votar")]
         public ushort VotingPeriodDuration { get; set; } = 25;
 
-        [Description("How many seconds players are show messages at the top of their screen")]
-        public ushort VoteBroadcastDuration { get; set; } = 5;
+        [Description("Cuántos segundos los jugadores muestran mensajes en la parte superior de su pantalla")]
+        public ushort VoteBroadcastDuration { get; set; } = 8;
 
-        [Description("How many seconds after a vote restart ends before the round is restarted")]
+        [Description("Cuántos segundos después de que finaliza el reinicio de una votación antes de que se reinicie la ronda")]
         public ushort VoterestartRestartDelay { get; set; } = 5;
 
-        public string VotekickStartedBroadcast { get; set; } = "Votekick: {name} for {reason}\nType \".vote yes\" or \".vote no\" in the console to vote!";
+        public string VotekickStartedBroadcast { get; set; } = "Votekick: {name} for {reason}\nType \".vote yes\" or \".vote no\" en la consola para votar!";
 
-        public string VotekickSuccessBroadcast { get; set; } = "{name} was votekicked for {reason}!";
+        public string VotekickSuccessBroadcast { get; set; } = "{name} Fue votado por {reason}!";
 
-        public string VotekickFailBroadcast { get; set; } = "{name} was not votekicked!";
+        public string VotekickFailBroadcast { get; set; } = "{name} No fue votado!";
 
         public string VotekickKickMessage { get; set; } = "Votekick: {reason}";
 
-        public string VoterestartStartedBroadcast { get; set; } = "Vote restart: Restart the round for {}\nType \".vote yes\" or \".vote no\" in the console to vote!";
+        public string VoterestartStartedBroadcast { get; set; } = "Votar reinicio: Reiniciar la ronda por {}\nType \".vote yes\" or \".vote no\" en la consola para votar!";
 
-        public string VoterestartSuccessBroadcast { get; set; } = "The vote was successful and the round will restart in 5 seconds!";
+        public string VoterestartSuccessBroadcast { get; set; } = "La votación fue exitosa y la ronda se reiniciará en 5 segundos!";
 
-        public string VoterestartFailBroadcast { get; set; } = "The vote was unsuccessful so the round will not restart!";
+        public string VoterestartFailBroadcast { get; set; } = "La votación no tuvo éxito, por lo que la ronda no se reiniciará!";
 
-        public string VoteDeletedBroadcast { get; set; } = "The current vote has been deleted!";
+        public string VoteDeletedBroadcast { get; set; } = "El voto actual ha sido eliminado!";
     }
 }
